@@ -64,7 +64,12 @@ public static class FileLoader {
     /// Get the full path to the main directory of the currently selected mod.
     /// </summary>
     public static string ModDataPath {
-        get { return Path.Combine(DataRoot, "Mods/" + StaticInits.MODFOLDER); }
+        get
+        {
+            return Application.platform == RuntimePlatform.Android // Android uses its own directory to store data which should be exposed using SAF
+            ? Path.Combine(Application.persistentDataPath, "Mods/" + StaticInits.MODFOLDER)
+            : Path.Combine(DataRoot, "Mods/" + StaticInits.MODFOLDER);
+        }
     }
 
     /// <summary>
