@@ -23,8 +23,44 @@ CYF's latest version is **v0.6.6**. It was built using **Unity Personal 2018.4.3
 To get this version of Unity, either:
 
 * [**Download the Unity Hub**](https://unity3d.com/get-unity/download) or
-* [**Find it in the Unity Version Archive**](https://unity3d.com/get-unity/download/archive) (remember, it's **2018.4.36**).
+* [**Find it in the Unity Version Archive**](https://unity.com/releases/editor/whats-new/2018.4.36) (remember, it's **2018.4.36**).
 
+***
+
+## Building
+
+You will need to use IL2CPP if you want this to run on most phones (arm64) because Unity
+
+Requires 
+  - Android SDK Tools 26.1.1
+    Can be obtained using: 
+      - `sdkmanager --install tools`
+      - Android Studio SDK Manager (Disable "Hide Obsolete Packages")
+  - Android NDK 16.1.4479499
+    Can be obtained using: 
+      - `sdkmanager --install ndk;16.1.4479499`
+      - Android Studio SDK Manager (Enable "Show Package Details")
+    **Note: You must specify the directory in Edit > Preferences > External Tools (it's on the Sidebar) > NDK**
+    If you do not specify the directory, it may use the incorrect NDK version and spit out a mystical error
+
+In addition, Unity might crash on launch or crash while building due to missing native libraries. The solution for these issues are dependent on whatever platform you're on. You are on your own. Sorry.
+
+***
+
+## Building
+
+Requires 
+  - Android SDK Tools 26.1.1
+    Can be obtained using: 
+      - `sdkmanager --install tools`
+      - Android Studio SDK Manager (Disable "Hide Obsolete Packages")
+  - Android NDK 16.1.4479499
+    Can be obtained using: 
+      - `sdkmanager --install ndk;16.1.4479499`
+      - Android Studio SDK Manager (Enable "Show Package Details")
+    **Note: You must specify the directory in Edit > Preferences > External Tools (it's on the Sidebar) > NDK**
+    If you do not specify the directory, it may use the incorrect NDK version and spit out a mystical error
+ 
 ***
 
 ## Required files
