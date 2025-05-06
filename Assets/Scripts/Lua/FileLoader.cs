@@ -36,9 +36,11 @@ public static class FileLoader {
 
             try {
                 System.Diagnostics.Debug.Assert(rootInfo.Parent != null, "rootInfo.Parent != null");
-                rootInfo = new DirectoryInfo(rootInfo.Parent.FullName);
+                rootInfo = Application.platform == RuntimePlatform.Android
+                  ? new DirectoryInfo(rootInfo.FullName)
+                  : new DirectoryInfo(rootInfo.Parent.FullName);
             } catch {
-                UnitaleUtil.DisplayLuaError("CYF's Startup", "The engine detected no Mods folder in your files: are you sure it exists?");
+                UnitaleUtil.DisplayLuaError("CYF's Startup", "The engine detected no Mods folder in \"" + rootInfo + "\" : are you sure it exists?");
                 return;
             }
             SysDepDataRoot = rootInfo.FullName;
