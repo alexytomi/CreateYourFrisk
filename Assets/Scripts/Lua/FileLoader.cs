@@ -17,8 +17,14 @@ public static class FileLoader {
         if (Application.platform == RuntimePlatform.OSXPlayer)
             rootInfo = rootInfo.Parent;
 
+        // Android compatibility
+        if (Application.platform == RuntimePlatform.Android)
+            rootInfo = new DirectoryInfo(Application.persistentDataPath);
+
         if (rootInfo == null) return;
         string SysDepDataRoot = rootInfo.FullName;
+
+        Debug.Log(SysDepDataRoot);
 
         while (true) {
             DirectoryInfo[] dfs = rootInfo.GetDirectories();
@@ -63,12 +69,16 @@ public static class FileLoader {
     /// <summary>
     /// Get the full path to the main directory of the currently selected mod.
     /// </summary>
-    public static string ModDataPath {
+    public static string ModDataPath
+    {
         get
         {
-            return Application.platform == RuntimePlatform.Android // Android uses its own directory to store data which should be exposed using SAF
-            ? Path.Combine(Application.persistentDataPath, "Mods/" + StaticInits.MODFOLDER)
-            : Path.Combine(DataRoot, "Mods/" + StaticInits.MODFOLDER);
+            string path = Application.platform == RuntimePlatform.Android
+                ? Path.Combine(Application.persistentDataPath, "Mods/" + StaticInits.MODFOLDER)
+                : Path.Combine(DataRoot, "Mods/" + StaticInits.MODFOLDER);
+            
+            Debug.Log("ModDataPath: " + path); // Log the path
+            return path;
         }
     }
 
