@@ -26,6 +26,12 @@ public class DocumentProvider extends DocumentsProvider {
     private static final String ALL_MIME_TYPES = "*/*";
     private File BASE_DIR;
 
+    @Override
+    public boolean onCreate() {
+        BASE_DIR = getContext().getExternalFilesDir(null);
+        return true;
+    }
+
     // The default columns to return information about a root if no specific
     // columns are requested in a query.
     private static final String[] DEFAULT_ROOT_PROJECTION = new String[]{
@@ -53,8 +59,6 @@ public class DocumentProvider extends DocumentsProvider {
 
     @Override
     public Cursor queryRoots(String[] projection) {
-        // This is the only way I got it to not crash with a NullPointer cause of the context so be happy already.
-        BASE_DIR = getContext().getExternalFilesDir(null);
         final MatrixCursor result = new MatrixCursor(projection != null ? projection : DEFAULT_ROOT_PROJECTION);
         final String applicationName = getContext().getString(R.string.app_name);
 
@@ -249,10 +253,5 @@ public class DocumentProvider extends DocumentsProvider {
         row.add(Document.COLUMN_LAST_MODIFIED, file.lastModified());
         row.add(Document.COLUMN_FLAGS, flags);
         row.add(Document.COLUMN_ICON, R.mipmap.app_icon);
-    }
-
-    @Override
-    public boolean onCreate() {
-        return true;
     }
 }
