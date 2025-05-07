@@ -1,18 +1,19 @@
-package com.termux.filepicker;
+package unity.NobodysGettingPaidHere.CreateYourFrisk;
 
+import static android.os.Build.VERSION.SDK_INT;
+
+import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.graphics.Point;
 import android.os.CancellationSignal;
+import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.provider.DocumentsContract.Document;
 import android.provider.DocumentsContract.Root;
 import android.provider.DocumentsProvider;
 import android.webkit.MimeTypeMap;
-
-import com.termux.R;
-import com.termux.shared.termux.TermuxConstants;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,23 +21,10 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
 
-/**
- * A document provider for the Storage Access Framework which exposes the files in the
- * $HOME/ directory to other apps.
- * <p/>
- * Note that this replaces providing an activity matching the ACTION_GET_CONTENT intent:
- * <p/>
- * "A document provider and ACTION_GET_CONTENT should be considered mutually exclusive. If you
- * support both of them simultaneously, your app will appear twice in the system picker UI,
- * offering two different ways of accessing your stored data. This would be confusing for users."
- * - http://developer.android.com/guide/topics/providers/document-provider.html#43
- */
-public class TermuxDocumentsProvider extends DocumentsProvider {
 
+public class DocumentProvider extends DocumentsProvider {
     private static final String ALL_MIME_TYPES = "*/*";
-
-    private static final File BASE_DIR = TermuxConstants.TERMUX_HOME_DIR;
-
+    private File BASE_DIR;
 
     // The default columns to return information about a root if no specific
     // columns are requested in a query.
@@ -62,10 +50,13 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
             Document.COLUMN_SIZE
     };
 
+
     @Override
     public Cursor queryRoots(String[] projection) {
+        // This is the only way I got it to not crash with a NullPointer cause of the context so be happy already.
+        BASE_DIR = getContext().getExternalFilesDir(null);
         final MatrixCursor result = new MatrixCursor(projection != null ? projection : DEFAULT_ROOT_PROJECTION);
-        final String applicationName = getContext().getString(R.string.application_name);
+        final String applicationName = getContext().getString(R.string.app_name);
 
         final MatrixCursor.RowBuilder row = result.newRow();
         row.add(Root.COLUMN_ROOT_ID, getDocIdForFile(BASE_DIR));
@@ -75,7 +66,7 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
         row.add(Root.COLUMN_TITLE, applicationName);
         row.add(Root.COLUMN_MIME_TYPES, ALL_MIME_TYPES);
         row.add(Root.COLUMN_AVAILABLE_BYTES, BASE_DIR.getFreeSpace());
-        row.add(Root.COLUMN_ICON, R.mipmap.ic_launcher);
+        row.add(Root.COLUMN_ICON, R.mipmap.app_icon);
         return result;
     }
 
@@ -108,11 +99,6 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
         final File file = getFileForDocId(documentId);
         final ParcelFileDescriptor pfd = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
         return new AssetFileDescriptor(pfd, 0, file.length());
-    }
-
-    @Override
-    public boolean onCreate() {
-        return true;
     }
 
     @Override
@@ -167,15 +153,15 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
         final int MAX_SEARCH_RESULTS = 50;
         while (!pending.isEmpty() && result.getCount() < MAX_SEARCH_RESULTS) {
             final File file = pending.removeFirst();
-            // Avoid directories outside the $HOME directory linked with symlinks (to avoid e.g. search
+            // Avoid directories outside the Android/data/<package> directory linked with symlinks (to avoid e.g. search
             // through the whole SD card).
-            boolean isInsideHome;
+            boolean isInsideAppData;
             try {
-                isInsideHome = file.getCanonicalPath().startsWith(TermuxConstants.TERMUX_HOME_DIR_PATH);
+                isInsideAppData = file.getCanonicalPath().startsWith(String.valueOf(BASE_DIR));
             } catch (IOException e) {
-                isInsideHome = true;
+                isInsideAppData = true;
             }
-            if (isInsideHome) {
+            if (isInsideAppData) {
                 if (file.isDirectory()) {
                     Collections.addAll(pending, file.listFiles());
                 } else {
@@ -262,7 +248,11 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
         row.add(Document.COLUMN_MIME_TYPE, mimeType);
         row.add(Document.COLUMN_LAST_MODIFIED, file.lastModified());
         row.add(Document.COLUMN_FLAGS, flags);
-        row.add(Document.COLUMN_ICON, R.mipmap.ic_launcher);
+        row.add(Document.COLUMN_ICON, R.mipmap.app_icon);
     }
 
+    @Override
+    public boolean onCreate() {
+        return true;
+    }
 }
