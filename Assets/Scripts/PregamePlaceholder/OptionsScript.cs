@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using MoonSharp.Interpreter;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
-public class OptionsScript : MonoBehaviour {
+public class OptionsScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     // used to prevent the player from erasing real/almighty globals or their save by accident
     private int RealGlobalCooldown;
     private int AlMightyGlobalCooldown;
@@ -287,38 +288,6 @@ public class OptionsScript : MonoBehaviour {
         if (GlobalControls.input.Down == ButtonState.PRESSED)
             SelectButton(1);
 
-        // Update the description every 1/6th of a second
-        if (DescriptionTimer > 0)
-            DescriptionTimer--;
-        else {
-            DescriptionTimer = 10;
-
-            // Try to find which button the player is hovering over
-            string hoverItem = null;
-            // If the player is within the range of the buttons
-            int mousePosX = (int)((ScreenResolution.mousePosition.x / ScreenResolution.displayedSize.x) * 640);
-            int mousePosY = (int)((Input.mousePosition.y / ScreenResolution.displayedSize.y) * 480);
-            if (mousePosX >= 40 && mousePosX <= 290) {
-                if      (mousePosY <= 420 && mousePosY > 380) hoverItem = "ResetRG";
-                else if (mousePosY <= 380 && mousePosY > 340) hoverItem = "ResetAG";
-                else if (mousePosY <= 340 && mousePosY > 300) hoverItem = "ClearSave";
-                else if (mousePosY <= 300 && mousePosY > 260) hoverItem = "Safe";
-                else if (mousePosY <= 260 && mousePosY > 220) hoverItem = "Retro";
-                else if (mousePosY <= 220 && mousePosY > 180) hoverItem = "Scale";
-                else if (mousePosY <= 180 && mousePosY > 140) hoverItem = "Discord";
-                else if (mousePosY <= 140 && mousePosY > 100) hoverItem = "Keys";
-                else if (mousePosY <= 100 && mousePosY >  60 && CrateUnlocked) hoverItem = "Crate";
-                else if (mousePosY <=  60 && mousePosY >  20) hoverItem = "Exit";
-            }
-
-            // Change the description to the current one
-            if (hoverItem != null)        Description.GetComponent<Text>().text = GetDescription(hoverItem);
-            // Else go back to the one selected by the inputs
-            else if (selectedButton >= 0) Description.GetComponent<Text>().text = GetDescription(buttons[selectedButton].name);
-            // Else pick the default description
-            else                          Description.GetComponent<Text>().text = GetDescription("");
-        }
-
         // Make the player click twice to reset RG or AG, or to wipe their save
         if (RealGlobalCooldown > 0)
             RealGlobalCooldown -= 1;
@@ -340,5 +309,17 @@ public class OptionsScript : MonoBehaviour {
             SaveCooldown = -1;
             ClearSave.GetComponentInChildren<Text>().text = !LocalCrate ? "Wipe Save" : "WYPE SAV";
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+       Debug.Log("Inside " + name);
+       Description.GetComponent<Text>().text = GetDescription(name);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+       Debug.Log("Outside " + name);
+       Description.GetComponent<Text>().text = GetDescription("");
     }
 }
