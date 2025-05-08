@@ -78,8 +78,6 @@ public static class FileLoader {
             string path = Application.platform == RuntimePlatform.Android
                 ? Path.Combine(Application.persistentDataPath, "Mods/" + StaticInits.MODFOLDER)
                 : Path.Combine(DataRoot, "Mods/" + StaticInits.MODFOLDER);
-            
-            Debug.Log("ModDataPath: " + path); // Log the path
             return path;
         }
     }
