@@ -10,20 +10,14 @@
       </intent-filter>
       <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
     </activity>
-    <meta-data android:name="unity.build-id" android:value="7555428f-2315-4461-ae07-c4b8dd837bf8" />
-    <meta-data android:name="unity.splash-mode" android:value="0" />
-    <meta-data android:name="unity.splash-enable" android:value="True" />
-    <provider
-        android:name="unity.NobodysGettingPaidHere.CreateYourFrisk.DocumentProvider"
-        android:authorities="unity.NobodysGettingPaidHere.CreateYourFrisk.documents"
-        android:exported="true"
-        android:grantUriPermissions="true"
-        android:permission="android.permission.MANAGE_DOCUMENTS">
+    <provider android:name="unity.NobodysGettingPaidHere.CreateYourFrisk.DocumentProvider" android:authorities="unity.NobodysGettingPaidHere.CreateYourFrisk.documents" android:exported="true" android:grantUriPermissions="true" android:permission="android.permission.MANAGE_DOCUMENTS">
       <intent-filter>
         <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
       </intent-filter>
     </provider>
-
+    <meta-data android:name="unity.build-id" android:value="bc56f6be-30b7-4ca3-bc2e-049174424900" />
+    <meta-data android:name="unity.splash-mode" android:value="0" />
+    <meta-data android:name="unity.splash-enable" android:value="True" />
   </application>
   <uses-feature android:glEsVersion="0x00020000" />
   <uses-permission android:name="android.permission.INTERNET" />
