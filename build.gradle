@@ -31,8 +31,9 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion '36.0.0'
+    ndkVersion '16.1.4479499'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -40,8 +41,8 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 27
-        targetSdkVersion 29
+        minSdkVersion 21
+        targetSdkVersion 30
         applicationId 'unity.NobodysGettingPaidHere.CreateYourFrisk'
         ndk {
         }
