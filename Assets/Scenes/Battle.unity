@@ -112,6 +112,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!21 &42432139
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &113347612
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,16 +193,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dc5aa61b3446942acd3e628a7d73d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterSound: $
+  letterAdjustShifts: []
+  fontVoice: 
   currentLine: 0
   _textMaxWidth: 320
   currentCharacter: 0
   currentReferenceCharacter: 0
-  nextMonsterDialogueOnce: 0
-  wasStated: 0
+  currentSkippable: 1
   columnShift: 265
   columnNumber: 2
-  blockSkip: 0
   skipNowIfBlocked: 0
   lateStartWaiting: 0
 --- !u!1 &132697915
@@ -396,6 +428,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185940573}
   m_CullTransparentMesh: 0
+--- !u!21 &191867820
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &209795024
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c152f559704a98f488c1e63266ed7418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 191867820}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -822,6 +887,7 @@ GameObject:
   - component: {fileID: 506907624}
   - component: {fileID: 506907627}
   - component: {fileID: 506907626}
+  - component: {fileID: 506907628}
   m_Layer: 5
   m_Name: ItemBt
   m_TagString: Untagged
@@ -909,6 +975,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7b8a91bf13f244b93c1a72a65984e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &506907628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506907622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adc3745aa9af27afa807a1680e5e198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightButton: {fileID: 0}
 --- !u!1 &516848000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,6 +1140,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573913229}
   m_CullTransparentMesh: 0
+--- !u!21 &593470736
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &599533877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,10 +1785,11 @@ MonoBehaviour:
   mercyButton: {fileID: 1280180707}
   action: 0
   forcedAction: 4
+  arenaParent: {fileID: 0}
   psContainer: {fileID: 0}
   fightUI: {fileID: 0}
   monsterDialogues: []
-  monsterDialogueEnemyID: 
+  monsterDialogueEnemy: []
   playerOffsets:
   - {x: 16, y: 19}
   - {x: 16, y: 19}
@@ -1685,7 +1798,7 @@ MonoBehaviour:
   exp: 0
   gold: 0
   readyToNextLine: 
-  needOnDeath: 0
+  checkDeathCall: 0
   stateSwitched: 0
   battleDialogueStarted: 0
   UIStates:
@@ -1911,6 +2024,39 @@ MonoBehaviour:
   CanRun: 1
   waveBeginTime: 0
   gameOverStance: 0
+--- !u!21 &799589731
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &844207265
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,6 +2431,8 @@ GameObject:
   - component: {fileID: 991344421}
   - component: {fileID: 991344424}
   - component: {fileID: 991344423}
+  - component: {fileID: 991344425}
+  - component: {fileID: 991344426}
   m_Layer: 5
   m_Name: ActBt
   m_TagString: Untagged
@@ -2372,6 +2520,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7b8a91bf13f244b93c1a72a65984e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &991344425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991344419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adc3745aa9af27afa807a1680e5e198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightButton: {fileID: 991344426}
+--- !u!114 &991344426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991344419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 991344421}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1007297935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,6 +2805,39 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1197438037}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1269700291
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1280180705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,6 +2851,7 @@ GameObject:
   - component: {fileID: 1280180707}
   - component: {fileID: 1280180710}
   - component: {fileID: 1280180709}
+  - component: {fileID: 1280180711}
   m_Layer: 5
   m_Name: MercyBt
   m_TagString: Untagged
@@ -2704,6 +2939,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7b8a91bf13f244b93c1a72a65984e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1280180711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280180705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adc3745aa9af27afa807a1680e5e198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightButton: {fileID: 0}
 --- !u!1 &1304618329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,29 +3405,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac8dc980caea604a81186f096e200ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterSound: 
+  letterAdjustShifts: []
+  fontVoice: 
   currentLine: 0
   _textMaxWidth: 0
   currentCharacter: 0
   currentReferenceCharacter: 0
-  nextMonsterDialogueOnce: 0
-  wasStated: 0
+  currentSkippable: 1
   columnShift: 265
   columnNumber: 2
-  blockSkip: 0
   skipNowIfBlocked: 0
   lateStartWaiting: 0
   bubble: 0
   progress: 0
   autoSetLayer: 0
   needFontReset: 0
-  noAutoLineBreak: 0
   isMainTextObject: 0
-  noSelfAdvance: 0
   deleteWhenFinished: 1
   _color: {r: 1, g: 1, b: 1, a: 1}
-  hasColorBeenSet: 0
-  hasAlphaBeenSet: 0
+  textColorSet: 0
+  textAlphaSet: 0
 --- !u!1 &1339420633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3713,7 +3958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c152f559704a98f488c1e63266ed7418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 1269700291}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -4176,16 +4421,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dc5aa61b3446942acd3e628a7d73d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterSound: $
+  letterAdjustShifts: []
+  fontVoice: 
   currentLine: 0
   _textMaxWidth: 320
   currentCharacter: 0
   currentReferenceCharacter: 0
-  nextMonsterDialogueOnce: 0
-  wasStated: 0
+  currentSkippable: 1
   columnShift: 265
   columnNumber: 2
-  blockSkip: 0
   skipNowIfBlocked: 0
   lateStartWaiting: 0
 --- !u!1 &1642330544
@@ -4825,6 +5069,8 @@ GameObject:
   - component: {fileID: 1745075055}
   - component: {fileID: 1745075058}
   - component: {fileID: 1745075057}
+  - component: {fileID: 1745075060}
+  - component: {fileID: 1745075059}
   m_Layer: 5
   m_Name: FightBt
   m_TagString: Untagged
@@ -4912,6 +5158,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7b8a91bf13f244b93c1a72a65984e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1745075059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745075053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1745075055}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1745075060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745075053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adc3745aa9af27afa807a1680e5e198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightButton: {fileID: 1745075059}
 --- !u!1 &1776304109
 GameObject:
   m_ObjectHideFlags: 0
@@ -5020,6 +5319,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803020736}
   m_CullTransparentMesh: 0
+--- !u!1 &1814911296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1814911299}
+  - component: {fileID: 1814911298}
+  - component: {fileID: 1814911297}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1814911297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814911296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1814911298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814911296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &1814911299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814911296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1830754305
 GameObject:
   m_ObjectHideFlags: 0
@@ -5604,26 +5969,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac8dc980caea604a81186f096e200ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterSound: 
+  letterAdjustShifts: []
+  fontVoice: 
   currentLine: 0
   _textMaxWidth: 0
   currentCharacter: 0
   currentReferenceCharacter: 0
-  nextMonsterDialogueOnce: 0
-  wasStated: 0
+  currentSkippable: 1
   columnShift: 265
   columnNumber: 2
-  blockSkip: 0
   skipNowIfBlocked: 0
   lateStartWaiting: 0
   bubble: 0
   progress: 0
   autoSetLayer: 0
   needFontReset: 0
-  noAutoLineBreak: 0
   isMainTextObject: 0
-  noSelfAdvance: 0
   deleteWhenFinished: 1
   _color: {r: 1, g: 1, b: 1, a: 1}
-  hasColorBeenSet: 0
-  hasAlphaBeenSet: 0
+  textColorSet: 0
+  textAlphaSet: 0
